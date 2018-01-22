@@ -106,13 +106,11 @@ public class SplashScreen extends JDialog {
 		updateRecentFiles(ZManga.recentFiles);
 
 		add(main);
-		pack();
 		setResizable(false);
 
-//		setSize(400, 300);
+		pack();
 		setLocationRelativeTo(null);
-		setVisible(true);
-		
+		setVisible(true);		
 	}
 	public void updateRecentFiles(ArrayList<File> files) {
 		int i = 0;
@@ -237,28 +235,4 @@ public class SplashScreen extends JDialog {
 		}
 	
 	}
-
-//	private Component createWestPanel() {
-//		//BPanel west = new BPanel(new BorderLayout());
-//
-//		ButtonGroup g = new ButtonGroup();
-//
-//		BRadioButton files = new BRadioButton("<html><b>Recent Files</b></html>");
-//		BRadioButton updates = new BRadioButton("<html><b>Source & Updates</b></html>");
-//		BRadioButton donations = new BRadioButton("<html><b>Support & Donations</b></html>");
-//
-//		g.add(files);
-//		g.add(updates);
-//		g.add(donations);
-//
-//		files.setSelected(true);
-//
-////		int w = 80;
-////		files.setPreferredSize(new Dimension(w,w));
-////		updates.setPreferredSize(new Dimension(w,w));
-////		donations.setPreferredSize(new Dimension(w,w));
-//		//west.add(Borders.group(files, updates, donations), BorderLayout.CENTER);
-//		return Borders.group(true, true, files, updates, donations);
-//	}
-	
 }
