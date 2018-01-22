@@ -1,0 +1,69 @@
+ML = Mouse Left Click
+MM = Mouse Middle Click
+MR = Mouse Right Click
+MW = Mouse Rotate Wheel
+
+-Canvas
+    MM      drag to pan canvas
+    MW      scroll to zoom in/out
+    Tab     switch between last selected lineart and color layer
+    R       Fill Color Layer
+    T       Clear Color Layer
+    P       pick color at mouse location
+-Colors Presets
+    ML          select Color
+    Shift+ML    set preset color
+    Shift+MR    remove preset color
+    Ctrl+ML     link/unlink color with color layer
+                (when linked, changing color changes the current color preset 
+                    and all color points with same color)     
+-Export Settings
+    ResolutionX     Eg. With image size 512x512, resolutionX 4, will export
+                    the image as 2048x2048. Exporting a higher resolution
+                    and later scaling it down may be used to increase export quality.
+    Antialiasing    Antialiases drawn lines  
+
+-Lineart layer
+--Curve Tool:
+    ML      add point
+    MR      finish line
+    Ctrl+Z  undo add point
+
+--Edit Tool:
+    ML      drag point
+    Ctrl+ML add point
+    Ctrl+MR remove point
+    X       delete line
+    Ctrl+Z  undo delete line
+    S       smooth point
+    D       sharp point
+    W       set line width
+    PgUp    move shape above
+    PgDown  move shape below
+
+--Ellipse Tool:
+    ML      drag ellipse
+
+--Width Tool:
+    ML      drag left right to decrease/increase width
+    `       set 0% width    
+    1       set 10% width
+    2       set 20% width
+    ...
+    0       set 100% width
+
+--Move Tool:
+    ML      drag to move
+
+--Color Tool:
+    ML      drag to set line color
+    MR      drag to set fill color
+    Ctrl+MR drag to remove fill color
+
+-Color layer
+--Fill Tool
+    ML      add color point
+    MR      drag to move color point
+    C       set color point color
+    X       remove color point
+    D       pick color point's color
