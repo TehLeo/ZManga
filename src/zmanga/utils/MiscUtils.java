@@ -26,6 +26,9 @@
  */
 package zmanga.utils;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.management.ManagementFactory;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,6 +52,20 @@ public class MiscUtils {
 		}
 		catch(Exception e) {
 			e.printStackTrace();
+		}
+		return null;
+	}
+	public static byte[] readFully(InputStream i) {
+		try {
+			ByteArrayOutputStream bos = new ByteArrayOutputStream(512);
+			byte[] buf = new byte[512];
+			int r;
+			while ((r = i.read(buf)) != -1) {
+				bos.write(buf, 0, r);
+			}
+			return bos.toByteArray();
+		} catch (IOException ex) {
+			ex.printStackTrace();
 		}
 		return null;
 	}

@@ -164,6 +164,7 @@ public class ZManga {
 			else {
 				imageData.width = (Integer)img.getMember("width");
 				imageData.height = (Integer)img.getMember("height");
+								
 				JSObject color = get(img, "colors", null);
 				if(color != null) {
 					Iterator<Object> iter = color.values().iterator();
@@ -195,11 +196,13 @@ public class ZManga {
 		}
 	}
 	public static String toJS(Color c) {
-		return "0x"+Integer.toHexString(c.getRGB());
+		return '"'+Integer.toHexString(c.getRGB())+'"';
 	}
 	public static Color readJS(Object s) {
 		if(s == null) return null;
-		int rgb = (int)l(s);
+		int rgb = 0;
+		if(s instanceof String) rgb = Integer.parseUnsignedInt((String)s, 16);
+		else rgb = (int)l(s);
 //		int rgb = Integer.parseInt(s, 16);
 		return new Color(rgb);
 	}
@@ -487,6 +490,7 @@ public class ZManga {
 		try {
 			ScriptEngineManager manager = new ScriptEngineManager();
 			engine = (NashornScriptEngine)manager.getEngineByName("nashorn");
+			Log.out("Engine " + engine);
 		}
 		catch(Exception e ) {
 			e.printStackTrace();
@@ -1011,11 +1015,16 @@ public class ZManga {
 		return bar;
 	}
 	public void loadFile(File f) {
+		Log.out("Loading: " + f);
 		if(f.exists()) {
 			try {
 				layers.clear();
+				
+				String js = new String(MiscUtils.readFully(new BufferedInputStream(new FileInputStream(f))));
 
-				JSObject jo = (JSObject)engine.eval(new FileReader(f));
+//				Log.out("read: " + js);
+				JSObject jo = (JSObject)engine.eval(js);
+//				JSObject jo = (JSObject)engine.eval(new FileReader(f));
 
 				JSObject image = (JSObject)jo.getMember("image");
 				imageData.load(image);
@@ -2929,7 +2938,9 @@ public class ZManga {
     }
 	static long l(Object o) {
 		if(o instanceof Long) return (Long)o;
-		if(o instanceof Integer) return (Integer)o;
+		if(o instanceof Integer) return (Integer)o;		
+		if(o instanceof Float) return ((Float)o).longValue();
+		if(o instanceof Double) return ((Double)o).longValue();
         return Long.parseLong((String)o);
     }
     static float f(Object o) {

@@ -30,12 +30,16 @@ import blend.ui.BScrollPane;
 import blend.ui.BTextArea;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
+import zmanga.utils.MiscUtils;
 
 /**
  *
@@ -52,9 +56,7 @@ public class Controls extends JDialog {
 		setTitle("Mouse/Key Controls");
 		
 		try {
-			//		controls = new String((new BufferedInputStream(Controls.class.getResourceAsStream("controls.txt"))));
-			controls = new String(Files.readAllBytes(Paths.get(Controls.class.getResource("controls.txt").toURI())));
-		
+			controls = new String(MiscUtils.readFully(new BufferedInputStream(Controls.class.getResourceAsStream("controls.txt"))));		
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -67,6 +69,7 @@ public class Controls extends JDialog {
 //		pack();
 		setLocationRelativeTo(null);
 	}
+	
 //	public static void main(String[] args) {
 //		new Controls().setVisible(true);
 //	}
