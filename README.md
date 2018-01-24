@@ -1,6 +1,8 @@
 # ZManga v1.0
 ZManga is an application for drawing lineart with mouse written in Java.
 
+![Screenshot](scr4.png)
+
 ## Features
 
 * Lineart Layer
@@ -24,10 +26,6 @@ ZManga is an application for drawing lineart with mouse written in Java.
   * you can export your image to png format. 
   
 TIP: You can export your image at 4x your image resolution, by typing "4" in the Export dialog without ticking Antialiasing. This allows you to easily select colored areas in another drawing application. Later, you can scale the image down to get smooth lines.
-
-## ScreenShot
-
-![Screenshot](scr4.png)
 
 ### Export
 
